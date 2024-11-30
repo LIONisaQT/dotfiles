@@ -14,7 +14,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions git-open)
 
 source $ZSH/oh-my-zsh.sh
 
