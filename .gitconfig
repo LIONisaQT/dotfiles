@@ -1,0 +1,26 @@
+[user]
+	name = Ryan Shee
+	email = ryan.shee@gmail.com
+[alias]
+  br = branch
+  ci = commit -am
+  co = checkout
+  cob = checkout -b
+  dd = diff
+  delpre = "!sh -c \"git branch -l | grep $1\"" -
+  delfinal = "!sh -c \"git branch -l | grep $1 | xargs git branch -D\"" -
+  ft = fetch
+  go = "!f() { git add . && git commit -m \"$@\" && git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
+  l = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  lf = !sh -c \"git log -$1 HEAD\" -
+  lx = !sh -c \"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -$1 HEAD\" -
+  o = open
+  ps = push
+  psf = push -f
+  rbi = "!sh -c \"git rebase -i HEAD~$1\"" -
+  rpo = remote prune origin
+  rst = reset --hard
+  s = status
+  unstage = reset HEAD --
+[color]
+  status = always
