@@ -34,7 +34,7 @@ function __gitbranchname()
 eval "$(zoxide init --cmd cd zsh)" # Use zoxide instead of cd without creating alias
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/ohmyposh.yaml)"
+  eval "$(oh-my-posh init zsh --config $HOME/ohmyposh.toml)"
 fi
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
