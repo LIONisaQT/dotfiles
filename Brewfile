@@ -8,8 +8,6 @@ brew "eza"
 brew "fzf"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Theme for zsh
-brew "powerlevel10k"
 # Official tldr client written in Rust
 brew "tlrc"
 # Shell extension to navigate your filesystem faster
