@@ -23,7 +23,7 @@ config.keys = {{
 }}
 
 config.font = wezterm.font("MesloLGS Nerd Font Mono")
-config.font_size = 16
+config.font_size = 12
 
 config.window_decorations = "RESIZE"
 
