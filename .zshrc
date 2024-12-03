@@ -8,6 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(git zsh-autosuggestions git-open)
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -37,7 +38,6 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/ohmyposh.toml)"
 fi
 
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
