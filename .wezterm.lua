@@ -26,6 +26,8 @@ config.font = wezterm.font("MesloLGS Nerd Font Mono")
 config.font_size = 12
 
 config.window_decorations = "RESIZE"
+config.initial_rows = 40
+config.initial_cols = 160
 
 config.color_scheme = "Dracula"
 
