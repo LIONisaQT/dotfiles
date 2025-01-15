@@ -4,10 +4,14 @@ Assumes you are using zsh and have a `.zshrc` already.
 
 ## tl;dr
 
-- Terminal: WezTerm
-- Terminal theme: Dracula (controlled by WezTerm)
-- Terminal prompt: Oh My Posh
-- Plugins manager: Oh My Zsh
+- Terminal: [WezTerm](https://wezfurlong.org/wezterm/index.html)
+- Terminal theme: [Dracula](https://draculatheme.com/) (controlled by WezTerm)
+- Terminal prompt: [Oh My Posh](https://ohmyposh.dev/)
+- Plugins manager: [Oh My Zsh](https://ohmyz.sh/)
+  - Plugins:
+    - [autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
+    - [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+    - [git-open](https://github.com/paulirish/git-open)
 
 ## Terminal
 
@@ -62,6 +66,7 @@ fi
 ## Recommended next steps
 
 1. Set symlinks to your personal dotfiles repo.
-1. Install zsh plugins (I use autosuggestions and git-open).
+1. Install zsh plugins.
 1. Check out [Brewfile](./Brewfile) to see cool stuff you might wanna use.
 1. Check out [`.zshrc`](./.zshrc) in case certain CLI should have alternative commands (e.g. replacing cd with zoxide the more correct way).
+1. Check out [`.gitconfig`](./.gitconfig) for shortcuts you might like.
