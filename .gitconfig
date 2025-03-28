@@ -26,6 +26,7 @@
   status = always
 [core]
   pager = delta
+	ignorecase = false
 [interactive]
   diffFilter = delta --color-only
 [delta]
