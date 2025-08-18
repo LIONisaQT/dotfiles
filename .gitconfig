@@ -1,6 +1,7 @@
 [user]
 	name = Ryan Shee
 	email = 7772995+LIONisaQT@users.noreply.github.com
+	# signingkey = ABCDEF1234567890   # Uncomment if using GPG
 
 [core]
 	pager = delta
@@ -43,17 +44,20 @@
 	default = simple
 
 [alias]
+	amend = commit --amend --no-edit
 	br = branch
 	ci = "!f() { git add . && git commit -m \"$@\"; }; f"
-	co = checkout
 	cob = checkout -b
+	co = checkout
 	dd = diff
 	delpre = "!f() { git branch -l | grep -- \"$1\"; }; f"
 	delfinal = "!f() { git branch -l | grep -- \"$1\" | xargs -r git branch -D; }; f"
 	ft = fetch
 	go = "!f() { git add . && git commit -m \"$@\" && git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
-	l = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+	last = log -1 HEAD
 	lf = "!f() { git log -${1:-10} HEAD; }; f"
+	lg = log --oneline --graph --all --decorate
+	lgf = log --graph --full-history --all --color --decorate
 	lx = "!f() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -${1:-10} HEAD; }; f"
 	o = open
 	ps = push
@@ -62,10 +66,6 @@
 	rpo = remote prune origin
 	rst = reset --hard
 	s = status
-	unstage = reset HEAD --
 	staged = diff --cached
-	last = log -1 HEAD
-	amend = commit --amend --no-edit
-	lgf = log --graph --full-history --all --color --decorate
 	undo = reset --soft HEAD~1
-	lg = log --oneline --graph --all --decorate
+	unstage = reset HEAD --
