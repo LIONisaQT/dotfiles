@@ -1,38 +1,71 @@
 [user]
 	name = Ryan Shee
 	email = 7772995+LIONisaQT@users.noreply.github.com
-[alias]
-  br = branch
-  ci = commit -am
-  co = checkout
-  cob = checkout -b
-  dd = diff
-  delpre = "!sh -c \"git branch -l | grep $1\"" -
-  delfinal = "!sh -c \"git branch -l | grep $1 | xargs git branch -D\"" -
-  ft = fetch
-  go = "!f() { git add . && git commit -m \"$@\" && git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
-  l = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-  lf = !sh -c \"git log -$1 HEAD\" -
-  lx = !sh -c \"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -$1 HEAD\" -
-  o = open
-  ps = push
-  psf = push -f
-  rbi = "!sh -c \"git rebase -i HEAD~$1\"" -
-  rpo = remote prune origin
-  rst = reset --hard
-  s = status
-  unstage = reset HEAD --
-[color]
-  status = always
+
 [core]
-  pager = delta
+	pager = delta
 	ignorecase = false
+	editor = code --wait
+	excludesfile = ~/.gitignore
+	autocrlf = input
+	logallrefupdates = true
+
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
+
 [delta]
-  navigate = true
-  side-by-side = true
+	navigate = true
+	side-by-side = true
+	features = side-by-side line-numbers decorations
+	plus-style = syntax
+	minus-style = syntax
+
 [merge]
-  conflictstyle = diff3
+	conflictstyle = diff3
+
 [diff]
-  colorMoved = default
+	colorMoved = default
+	algorithm = histogram
+
+[color]
+	ui = auto
+	status = always
+	branch = auto
+	diff = auto
+
+[pull]
+	rebase = true
+
+[fetch]
+	prune = true
+
+[push]
+	default = simple
+
+[alias]
+	br = branch
+	ci = "!f() { git add . && git commit -m \"$@\"; }; f"
+	co = checkout
+	cob = checkout -b
+	dd = diff
+	delpre = "!f() { git branch -l | grep -- \"$1\"; }; f"
+	delfinal = "!f() { git branch -l | grep -- \"$1\" | xargs -r git branch -D; }; f"
+	ft = fetch
+	go = "!f() { git add . && git commit -m \"$@\" && git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
+	l = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+	lf = "!f() { git log -${1:-10} HEAD; }; f"
+	lx = "!f() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -${1:-10} HEAD; }; f"
+	o = open
+	ps = push
+	psf = push -f
+	rbi = "!f() { git rebase -i HEAD~${1:-1}; }; f"
+	rpo = remote prune origin
+	rst = reset --hard
+	s = status
+	unstage = reset HEAD --
+	staged = diff --cached
+	last = log -1 HEAD
+	amend = commit --amend --no-edit
+	lgf = log --graph --full-history --all --color --decorate
+	undo = reset --soft HEAD~1
+	lg = log --oneline --graph --all --decorate
