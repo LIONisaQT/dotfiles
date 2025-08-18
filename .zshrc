@@ -1,42 +1,81 @@
+# ============================
+# Oh My Zsh configuration
+# ============================
+
 export ZSH="$HOME/.oh-my-zsh"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# Disable marking untracked files as dirty to speed up large repos
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Plugins
 plugins=(git zsh-autosuggestions git-open)
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Syntax highlighting
+if command -v brew &>/dev/null; then
+  source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
+# Load Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# ============================
+# User Configuration
+# ============================
 
+# Bat theme
 export BAT_THEME="TwoDark"
 
+# Aliases
 alias ls="eza --icons=auto --long --header --group-directories-first --no-permissions"
 alias zreload="source ~/.zshrc"
 
-function __gitbranchname()
-{
-  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="heads/"} {print $NF}')
-  if [[ $branch == "" ]];
-  then
-    :
-  else
-    echo \'$branch\'
-  fi
-}
+# ============================
+# NVM (Node Version Manager)
+# ============================
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load NVM
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Load NVM bash completion
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# ============================
+# Zoxide for smarter navigation
+# ============================
+eval "$(zoxide init --cmd cd zsh)"
 
-eval "$(zoxide init --cmd cd zsh)" # Use zoxide instead of cd without creating alias
-
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+# ============================
+# Oh My Posh (prompt theming)
+# ============================
+if [[ "$TERM_PROGRAM" != "Apple_Terminal" ]]; then
   eval "$(oh-my-posh init zsh --config $HOME/ohmyposh.toml)"
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# ============================
+# FZF (fuzzy finder)
+# ============================
+if command -v fzf &>/dev/null; then
+  eval "$(fzf --completion --key-bindings --no-sort --reverse --inline-info)"
+  eval "$(fzf --key-bindings --completion --no-sort --reverse)"
+fi
 
-eval "$(fzf --zsh)" # fzf keybinds and fuzzy autocomplete
+# ============================
+# Performance / quality of life
+# ============================
+
+# Faster prompt rendering
+DISABLE_AUTO_TITLE="true"
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=5000
+SAVEHIST=5000
+
+# Enable command correction
+setopt CORRECT
+
+# Share history across sessions
+setopt SHARE_HISTORY
+
+# Case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# ============================
+# Optional: load custom scripts
+# ============================
+# for file in ~/.zshrc.d/*.zsh; do source "$file"; done 2>/dev/null
