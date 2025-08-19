@@ -51,10 +51,7 @@ fi
 # ============================
 # FZF (fuzzy finder)
 # ============================
-if command -v fzf &>/dev/null; then
-  eval "$(fzf --completion --key-bindings --no-sort --reverse --inline-info)"
-  eval "$(fzf --key-bindings --completion --no-sort --reverse)"
-fi
+eval "$(fzf --zsh)" # fzf keybinds and fuzzy autocomplete
 
 # ============================
 # Performance / quality of life
