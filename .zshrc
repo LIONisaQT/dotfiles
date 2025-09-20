@@ -73,6 +73,22 @@ setopt SHARE_HISTORY
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # ============================
+# Custom functions
+# ============================
+
+compress() {
+  echo "🔄 Compressing $1 → $2 ..."
+  ffmpeg -hide_banner -loglevel error -stats \
+    -i "$1" -vcodec libx264 -crf 23 -preset medium -acodec aac -b:a 128k "$2"
+
+  if [ $? -eq 0 ]; then
+    echo "✅ Compression complete: $2"
+  else
+    echo "❌ Compression failed"
+  fi
+}
+
+# ============================
 # Optional: load custom scripts
 # ============================
 # for file in ~/.zshrc.d/*.zsh; do source "$file"; done 2>/dev/null
